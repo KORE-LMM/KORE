@@ -138,8 +138,8 @@ We thank the following open-source projects for making this work possible:
 - [CorDA](https://github.com/iboing/CorDA) and [LoRA-Null](https://github.com/HungerPWAY/LoRA-Null.git) for the constraint fine-tuning framework.
 - [EVOKE](https://github.com/EVOKE-LMM/EVOKE) for the knowledge adaptation evaluation.
 - [VLMEvalKit](https://github.com/open-compass/VLMEvalKit.git) for the knowledge retention evaluation.
+- [MCITlib](https://github.com/Ghy0501/MCITlib) and [CoIN](https://github.com/zackschen/CoIN.git) for the continual learning methods framework.
 
-- [MCITlib](https://github.com/Ghy0501/MCITlib) for the continual learning methods framework.
 
 
 ## 📝 Citation
