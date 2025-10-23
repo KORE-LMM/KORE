@@ -85,7 +85,7 @@ Step 1: extract covariance matrix and reconstruct weights
 
 bash kore_tool/extract_covariance_matrix/step1_benchmark.sh -d "MME MMBench_DEV_EN" -n 128 -r 235 -s 233
 
-The selection of -d refers to **DATASET_CONFIG** in benchmark_load.py, like: MME, HallusionBench, MathVision......
+The selection of -d refers to 'DATASET_CONFIG' in benchmark_load.py, like: MME, HallusionBench, MathVision......
 
 bash kore_tool/extract_covariance_matrix/step1_onevision_data.sh -d "onevision" -n 64 -r 235 -s 233
 ```
