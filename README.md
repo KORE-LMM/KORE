@@ -88,17 +88,18 @@ bash kore_tool/extract_covariance_matrix/step1_benchmark.sh -d "MME MMBench_DEV_
 The selection of -d refers to **DATASET_CONFIG** in benchmark_load.py, like: MME, HallusionBench, MathVision......
 
 bash kore_tool/extract_covariance_matrix/step1_onevision_data.sh -d "onevision" -n 64 -r 235 -s 233
+```
 
-------------------------------------------------------------
 
+```shell
 Step 2: training
 
 bash kore_tool/training/training_kore.sh --data_path KORE-74K-training_data.json --output_dir train_ckpt/kore_epoch1 --num_train_epochs 1 --swanlab_project "kore" --swanlab_experiment_name "epoch1"
 
 --lora_null_v1 True does not freeze the 'A' matrix, whereas --lora_null_v2 True does.
+```
 
-------------------------------------------------------------
-
+```shell
 Step 3: merge
 
 python kore_tool/merge/merge_llava.py --model_id training_model --save_model True --save_path merge_model
@@ -110,32 +111,26 @@ python kore_tool/merge/merge_llava.py --model_id training_model --save_model Tru
 ## 🤖Evaluation
 
 ```shell
-
 Evaluate EVOKE
 
 CUDA_VISIBLE_DEVICES=0,1,2,3 bash kore_tool/evaluate_evoke/evoke.sh -c /path/to/checkpoint -o /path/to/output -q EVOKE/evoke_evaluation_data.jsonl
+```
 
-------------------------------------------------------------
 
+```shell
 Evaluate Knowledge Retention Benchmark (MME,MMBench,POPE,ScienceQA is based on the Llava framework itself)
 
 bash kore_tool/evaluate_retention_benchmark/mmbench.sh -m /path/to/model/checkpoint
-
 bash kore_tool/evaluate_retention_benchmark/mme.sh -m /path/to/model/checkpoint
-
 bash kore_tool/evaluate_retention_benchmark/pope.sh -m /path/to/model/checkpoint
-
 bash kore_tool/evaluate_retention_benchmark/sqa.sh -m /path/to/model/checkpoint
-
-------------------------------------------------------------
-
-Evaluate Knowledge Retention Benchmark 
-
-Other benchmarks is based on [VLMEvalKit](https://github.com/open-compass/VLMEvalKit.git)
-
-
 ```
 
+```shell
+Evaluate Knowledge Retention Benchmark 
+
+Other benchmarks is based on VLMEvalKit
+```
 
 ## 🤝 Acknowledgments
 We thank the following open-source projects for making this work possible:
