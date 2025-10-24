@@ -68,21 +68,19 @@ KORE-74K
 ```text
 conda env create -f kore.yml
 If there are any issues, you can refer to https://github.com/haotian-liu/LLaVA
-
+```
 or 
 
+```text
 conda create -n kore python=3.10 -y
 cd env
 pip install -r kore.txt
 ```
 
-
 ## 💥Training
 
-
+**Step 1: extract covariance matrix and reconstruct weights**
 ```shell
-Step 1: extract covariance matrix and reconstruct weights
-
 bash kore_tool/extract_covariance_matrix/step1_benchmark.sh -d "MME MMBench_DEV_EN" -n 128 -r 235 -s 233
 
 The selection of -d refers to 'DATASET_CONFIG' in benchmark_load.py, like: MME, HallusionBench, MathVision......
@@ -90,45 +88,39 @@ The selection of -d refers to 'DATASET_CONFIG' in benchmark_load.py, like: MME, 
 bash kore_tool/extract_covariance_matrix/step1_onevision_data.sh -d "onevision" -n 64 -r 235 -s 233
 ```
 
-
+**Step 2: training**
 ```shell
-Step 2: training
-
 bash kore_tool/training/training_kore.sh --data_path KORE-74K-training_data.json --output_dir train_ckpt/kore_epoch1 --num_train_epochs 1 --swanlab_project "kore" --swanlab_experiment_name "epoch1"
 
 --lora_null_v1 True does not freeze the 'A' matrix, whereas --lora_null_v2 True does.
 ```
 
+
+**Step 3: merge**
+
 ```shell
-Step 3: merge
-
 python kore_tool/merge/merge_llava.py --model_id training_model --save_model True --save_path merge_model
-
 ```
 
 
 
 ## 🤖Evaluation
 
+Evaluate **EVOKE**
 ```shell
-Evaluate EVOKE
-
 CUDA_VISIBLE_DEVICES=0,1,2,3 bash kore_tool/evaluate_evoke/evoke.sh -c /path/to/checkpoint -o /path/to/output -q EVOKE/evoke_evaluation_data.jsonl
 ```
 
-
+Evaluate Knowledge Retention Benchmark (**MME,MMBench,POPE,ScienceQA** is based on the Llava framework itself)
 ```shell
-Evaluate Knowledge Retention Benchmark (MME,MMBench,POPE,ScienceQA is based on the Llava framework itself)
-
 bash kore_tool/evaluate_retention_benchmark/mmbench.sh -m /path/to/model/checkpoint
 bash kore_tool/evaluate_retention_benchmark/mme.sh -m /path/to/model/checkpoint
 bash kore_tool/evaluate_retention_benchmark/pope.sh -m /path/to/model/checkpoint
 bash kore_tool/evaluate_retention_benchmark/sqa.sh -m /path/to/model/checkpoint
 ```
 
-```shell
 Evaluate Knowledge Retention Benchmark 
-
+```shell
 Other benchmarks is based on VLMEvalKit
 ```
 
