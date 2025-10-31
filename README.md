@@ -87,6 +87,10 @@ The selection of -d refers to 'DATASET_CONFIG' in benchmark_load.py, like: MME, 
 
 bash kore_tool/extract_covariance_matrix/step1_onevision_data.sh -d "onevision" -n 64 -r 235 -s 233
 ```
+The OneVision dataset used can be downloaded from here 🤗 [LLaVA-OneVision-Data](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-Data).
+
+
+
 
 **Step 2: training**
 ```shell
