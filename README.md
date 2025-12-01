@@ -128,6 +128,10 @@ Evaluate Knowledge Retention Benchmark
 Other benchmarks is based on VLMEvalKit
 ```
 
+Replace the ckpt path with the trained model here.
+https://github.com/open-compass/VLMEvalKit/blob/688e9da4a27e2691cd9a1723df6b65e5453f0889/vlmeval/config.py#L709
+
+
 ## 🤝 Acknowledgments
 We thank the following open-source projects for making this work possible:
 - [LLaVA](https://github.com/haotian-liu/LLaVA.git) for the model training framework.
