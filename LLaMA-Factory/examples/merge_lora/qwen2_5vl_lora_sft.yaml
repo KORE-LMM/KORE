@@ -1,0 +1,13 @@
+### Note: DO NOT use quantized model or quantization_bit when merging lora adapters
+
+### model
+model_name_or_path: /hkfs/work/workspace/scratch/lmu_chd4938-MINED_26/MINED_26/data_ckpt/vlm_ckpt/Qwen2.5-VL-7B-Instruct
+adapter_name_or_path: /hkfs/work/workspace/scratch/lmu_chd4938-MINED_26/qwen_train_ckpt/replay_lora
+template: qwen2_vl
+trust_remote_code: true
+
+### export
+export_dir: /hkfs/work/workspace/scratch/lmu_chd4938-MINED_26/qwen_train_ckpt/replay_lora/merge
+export_size: 5
+export_device: auto  # choices: [cpu, auto]
+export_legacy_format: false
