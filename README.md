@@ -94,7 +94,7 @@ The OneVision dataset used can be downloaded from here 🤗 [LLaVA-OneVision-Dat
 
 **Step 2: training**
 ```shell
-bash kore_tool/training/training_kore.sh --data_path KORE-74K-training_data.json --output_dir train_ckpt/kore_epoch1 --num_train_epochs 1 --swanlab_project "kore" --swanlab_experiment_name "epoch1"
+bash kore_tool/training/training_kore.sh --data_path KORE-74K-training_data.json --output_dir train_ckpt/kore_epoch1 --num_train_epochs 6 --swanlab_project "kore" --swanlab_experiment_name "epoch1"
 
 --lora_null_v1 True does not freeze the 'A' matrix, whereas --lora_null_v2 True does.
 ```
